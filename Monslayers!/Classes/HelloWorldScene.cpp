@@ -210,7 +210,7 @@ void HelloWorld::ccTouchesEnded( CCSet* touches, CCEvent* event )
 	// Set up initial position of projectile
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	CCSprite *projectile = CCSprite::create( "projectile.png", CCRectMake( 0, 0, 40, 40 ) );
-	projectile->setPosition( ccp( 20, winSize.height/2 ) );
+	projectile->setPosition( ccp( 20, player->getPositionY()));
 	
 	// Determine offset of location to projectile
 	int offX = location.x - projectile->getPositionX();
