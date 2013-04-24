@@ -13,6 +13,8 @@
 		B761FE0F1723264000EF98CE /* projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = B761FE0C1723264000EF98CE /* projectile.png */; };
 		B761FE3017232DC900EF98CE /* background-music-aac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B761FE2E17232DC900EF98CE /* background-music-aac.mp3 */; };
 		B761FE3117232DC900EF98CE /* pew-pew-lei.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B761FE2F17232DC900EF98CE /* pew-pew-lei.mp3 */; };
+		B761FE391724877E00EF98CE /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B761FE371724877E00EF98CE /* Player.cpp */; };
+		B7CB7CFF17286041004EFA98 /* IntroScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7CB7CFE17286041004EFA98 /* IntroScene.cpp */; };
 		B7E26BB017220BC7005A73A3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E26BAF17220BC7005A73A3 /* QuartzCore.framework */; };
 		B7E26BB217220BC7005A73A3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E26BB117220BC7005A73A3 /* OpenGLES.framework */; };
 		B7E26BB417220BC7005A73A3 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E26BB317220BC7005A73A3 /* OpenAL.framework */; };
@@ -237,6 +239,10 @@
 		B761FE0C1723264000EF98CE /* projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = projectile.png; path = Resources/projectile.png; sourceTree = "<group>"; };
 		B761FE2E17232DC900EF98CE /* background-music-aac.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "background-music-aac.mp3"; path = "Resources/Sounds/background-music-aac.mp3"; sourceTree = "<group>"; };
 		B761FE2F17232DC900EF98CE /* pew-pew-lei.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "pew-pew-lei.mp3"; path = "Resources/Sounds/pew-pew-lei.mp3"; sourceTree = "<group>"; };
+		B761FE371724877E00EF98CE /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Classes/Player.cpp; sourceTree = "<group>"; };
+		B761FE381724877E00EF98CE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Classes/Player.h; sourceTree = "<group>"; };
+		B7CB7CFE17286041004EFA98 /* IntroScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntroScene.cpp; path = Classes/IntroScene.cpp; sourceTree = "<group>"; };
+		B7CB7D00172860FD004EFA98 /* IntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
 		B7E26BAC17220BC7005A73A3 /* Monslayers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monslayers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7E26BAF17220BC7005A73A3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B7E26BB117220BC7005A73A3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1717,6 +1723,10 @@
 		B7E26E8D17220BCA005A73A3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B7CB7D00172860FD004EFA98 /* IntroScene.h */,
+				B7CB7CFE17286041004EFA98 /* IntroScene.cpp */,
+				B761FE371724877E00EF98CE /* Player.cpp */,
+				B761FE381724877E00EF98CE /* Player.h */,
 				B761FDDB1722105F00EF98CE /* AppMacros.h */,
 				B761FDDC1722105F00EF98CE /* GameOverScene.cpp */,
 				B761FDDD1722105F00EF98CE /* GameOverScene.h */,
@@ -1997,6 +2007,8 @@
 				B7E26E9017220BCA005A73A3 /* AppDelegate.cpp in Sources */,
 				B7E26E9317220BCA005A73A3 /* HelloWorldScene.cpp in Sources */,
 				B761FDDE1722105F00EF98CE /* GameOverScene.cpp in Sources */,
+				B761FE391724877E00EF98CE /* Player.cpp in Sources */,
+				B7CB7CFF17286041004EFA98 /* IntroScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
