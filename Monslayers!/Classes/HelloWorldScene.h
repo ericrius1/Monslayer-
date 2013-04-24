@@ -18,6 +18,7 @@ public:
     static cocos2d::CCScene* scene();
     
 	void addMonster();
+    void addCrazyMonster();
     
     // a selector callback
     void menuCloseCallback( CCObject* pSender);
@@ -45,6 +46,8 @@ protected:
 	int playerMaxDuration;
 	int playerRangeDuration;
     int playerActualDuration;
+    
+    float projectileVelocity;
 
     
     

@@ -88,7 +88,7 @@ bool HelloWorld::init()
     // 3. add your codes below...
 	
 	 winSize = CCDirector::sharedDirector()->getWinSize();
-	
+    projectileVelocity =1580; //pixels per second
     
     //**** PLAY HERE TO FIGURE OUT CLIPPING ******
     player = CCSprite::create( "player.png", CCRectMake( 0, 0, 54, 80 ) );
@@ -136,6 +136,11 @@ void HelloWorld::gameLogic( float deltaTime )
 
 void HelloWorld::addMonster()
 {
+    if(rand()%10  >2 )
+    {
+        addCrazyMonster();
+        return;
+    }
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	
 	CCSprite *monster = CCSprite::create( "monster.png", CCRectMake( 0, 0, 54, 80 ) );
@@ -147,8 +152,8 @@ void HelloWorld::addMonster()
 	this->addChild( monster );
     
 	// Determine speed of the monster
-	int minDuration = 3;
-	int maxDuration = 5;
+	int minDuration = 2;
+	int maxDuration = 4;
 	int rangeDuration = maxDuration - minDuration;
 	int actualDuration = ( rand() % rangeDuration ) + minDuration;
     
@@ -158,6 +163,34 @@ void HelloWorld::addMonster()
     
 	monster->setTag( 1 );
 	_monsters->addObject( monster );
+}
+
+void HelloWorld::addCrazyMonster()
+{
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	
+	CCSprite *monster = CCSprite::create( "crazy_monster.png", CCRectMake( 0, 0, 54, 80 ) );
+	int minY = monster->getContentSize().height/2;
+	int maxY = winSize.height - monster->getContentSize().height/2;
+	int rangeY = maxY - minY;
+	int actualY = ( rand() % rangeY ) + minY;
+	monster->setPosition( ccp( winSize.width + monster->getContentSize().width/2, actualY ) );
+	this->addChild( monster );
+    
+	// Determine speed of the monster
+	int minDuration = 2;
+	int maxDuration = 4;
+	int rangeDuration = maxDuration - minDuration;
+	int actualDuration = ( rand() % rangeDuration ) + minDuration;
+    
+	CCFiniteTimeAction *action = CCMoveTo::create( actualDuration, ccp( 0 - monster->getContentSize().width/2, ( rand() % rangeY ) + minY));
+	CCFiniteTimeAction *actionDone = CCCallFuncN::create( this, callfuncN_selector(HelloWorld::spriteMoveFinished) );
+	monster->runAction( CCSequence::create( action, actionDone, NULL ) );
+    
+	monster->setTag( 1 );
+	_monsters->addObject( monster );
+
+    
 }
 
 
@@ -172,7 +205,7 @@ void HelloWorld::spriteMoveFinished( CCNode* sender )
         
 		GameOverScene* gameOverScene = GameOverScene::create();
 		gameOverScene->getLayer()->getLabel()->setString( "You Lose!" );
-		//CCDirector::sharedDirector()->replaceScene( gameOverScene );
+		CCDirector::sharedDirector()->replaceScene( gameOverScene );
 	}
 	else if( sprite->getTag() == 2 )
 	{
@@ -234,8 +267,7 @@ void HelloWorld::ccTouchesEnded( CCSet* touches, CCEvent* event )
 	int offRealY = realY - projectile->getPosition().y;
 	float length = sqrtf( (offRealX*offRealX) + (offRealY*offRealY) );
 	
-	float velocity = 480/1;	// 480 pixels / 1 sec
-	float realMoveDuration = length / velocity;
+	float realMoveDuration = length / projectileVelocity;
     
 	// Move projectile to actual endpoint
 	projectile->runAction( CCSequence::create(
@@ -293,7 +325,7 @@ void HelloWorld::updateGame( float dt )
 			this->removeChild( monster );
             
 			_monstersDestroyed++;
-			if( _monstersDestroyed >= 5 )
+			if( _monstersDestroyed >= 20 )
 			{
 				GameOverScene* gameOverScene = GameOverScene::create();
 				gameOverScene->getLayer()->getLabel()->setString( "You Win!" );

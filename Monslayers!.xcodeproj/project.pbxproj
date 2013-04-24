@@ -14,6 +14,7 @@
 		B761FE3017232DC900EF98CE /* background-music-aac.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B761FE2E17232DC900EF98CE /* background-music-aac.mp3 */; };
 		B761FE3117232DC900EF98CE /* pew-pew-lei.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B761FE2F17232DC900EF98CE /* pew-pew-lei.mp3 */; };
 		B761FE391724877E00EF98CE /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B761FE371724877E00EF98CE /* Player.cpp */; };
+		B7BA083F172886B5004D4F9A /* crazy_monster.png in Resources */ = {isa = PBXBuildFile; fileRef = B7BA083E172886B5004D4F9A /* crazy_monster.png */; };
 		B7CB7CFF17286041004EFA98 /* IntroScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7CB7CFE17286041004EFA98 /* IntroScene.cpp */; };
 		B7E26BB017220BC7005A73A3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E26BAF17220BC7005A73A3 /* QuartzCore.framework */; };
 		B7E26BB217220BC7005A73A3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E26BB117220BC7005A73A3 /* OpenGLES.framework */; };
@@ -241,6 +242,7 @@
 		B761FE2F17232DC900EF98CE /* pew-pew-lei.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "pew-pew-lei.mp3"; path = "Resources/Sounds/pew-pew-lei.mp3"; sourceTree = "<group>"; };
 		B761FE371724877E00EF98CE /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Classes/Player.cpp; sourceTree = "<group>"; };
 		B761FE381724877E00EF98CE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Classes/Player.h; sourceTree = "<group>"; };
+		B7BA083E172886B5004D4F9A /* crazy_monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = crazy_monster.png; path = Resources/crazy_monster.png; sourceTree = "<group>"; };
 		B7CB7CFE17286041004EFA98 /* IntroScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IntroScene.cpp; path = Classes/IntroScene.cpp; sourceTree = "<group>"; };
 		B7CB7D00172860FD004EFA98 /* IntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
 		B7E26BAC17220BC7005A73A3 /* Monslayers!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Monslayers!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -789,6 +791,7 @@
 		B7E26BC017220BC7005A73A3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B7BA083E172886B5004D4F9A /* crazy_monster.png */,
 				B761FE1417232A4600EF98CE /* Sounds */,
 				B761FE0A1723264000EF98CE /* monster.png */,
 				B761FE0B1723264000EF98CE /* player.png */,
@@ -1808,6 +1811,7 @@
 				B761FE0F1723264000EF98CE /* projectile.png in Resources */,
 				B761FE3017232DC900EF98CE /* background-music-aac.mp3 in Resources */,
 				B761FE3117232DC900EF98CE /* pew-pew-lei.mp3 in Resources */,
+				B7BA083F172886B5004D4F9A /* crazy_monster.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
