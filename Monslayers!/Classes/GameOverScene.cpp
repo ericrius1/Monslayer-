@@ -1,5 +1,5 @@
-#include "GameOverScene.h";
-#include "HelloWorldScene.h";
+#include "GameOverScene.h"
+#include "HelloWorldScene.h"
 
 using namespace cocos2d;
 

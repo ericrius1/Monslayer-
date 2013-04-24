@@ -87,13 +87,26 @@ bool HelloWorld::init()
     /////////////////////////////
     // 3. add your codes below...
 	
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+	 winSize = CCDirector::sharedDirector()->getWinSize();
 	
     
     //**** PLAY HERE TO FIGURE OUT CLIPPING ******
-	CCSprite *player = CCSprite::create( "player.png", CCRectMake( 0, 0, 54, 80 ) );
+    player = CCSprite::create( "player.png", CCRectMake( 0, 0, 54, 80 ) );
 	player->setPosition( ccp( player->getContentSize().width/2, winSize.height/2 ) );
 	this->addChild( player );
+    
+    // ***MOVE PLAYER***
+    playerMinDuration = 2;
+    playerMaxDuration = 4;
+    playerRangeDuration = playerMaxDuration - playerMinDuration;
+    playerActualDuration = ( rand() % playerRangeDuration ) + playerMinDuration;
+    
+    CCFiniteTimeAction *upAction = CCMoveTo::create( playerActualDuration, ccp(player->getContentSize().width/2, winSize.height-player->getContentSize().height));
+    
+    CCFiniteTimeAction* upActionDone = CCCallFuncN::create( this,  callfuncN_selector(HelloWorld::playerUpFinished));
+	
+    player->runAction(CCSequence::create( upAction, upActionDone, NULL ));
+    
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	srand( time( NULL ) );
@@ -134,8 +147,8 @@ void HelloWorld::addMonster()
 	this->addChild( monster );
     
 	// Determine speed of the monster
-	int minDuration = 2;
-	int maxDuration = 4;
+	int minDuration = 3;
+	int maxDuration = 5;
 	int rangeDuration = maxDuration - minDuration;
 	int actualDuration = ( rand() % rangeDuration ) + minDuration;
     
@@ -159,7 +172,7 @@ void HelloWorld::spriteMoveFinished( CCNode* sender )
         
 		GameOverScene* gameOverScene = GameOverScene::create();
 		gameOverScene->getLayer()->getLabel()->setString( "You Lose!" );
-		CCDirector::sharedDirector()->replaceScene( gameOverScene );
+		//CCDirector::sharedDirector()->replaceScene( gameOverScene );
 	}
 	else if( sprite->getTag() == 2 )
 	{
@@ -167,6 +180,26 @@ void HelloWorld::spriteMoveFinished( CCNode* sender )
 	}
 }
 
+
+void HelloWorld::playerUpFinished( CCNode* sender )
+{
+    playerActualDuration = ( rand() % playerRangeDuration ) + playerMinDuration;
+    CCSprite *player = (CCSprite *)sender;
+    CCFiniteTimeAction *downAction = CCMoveTo::create( playerActualDuration, ccp(player->getContentSize().width/2, 0) );
+    CCFiniteTimeAction* downActionDone = CCCallFuncN::create( this,  callfuncN_selector(HelloWorld::playerDownFinished));
+    player->runAction( CCSequence::create( downAction, downActionDone, NULL ));
+
+}
+
+void HelloWorld::playerDownFinished( CCNode* sender )
+{
+    playerActualDuration = ( rand() % playerRangeDuration ) + playerMinDuration;
+    CCSprite *player = (CCSprite *)sender;
+    CCFiniteTimeAction *upAction = CCMoveTo::create( playerActualDuration, ccp(player->getContentSize().width/2, winSize.height - player->getContentSize().height/2) );
+    CCFiniteTimeAction* upActionDone = CCCallFuncN::create( this,  callfuncN_selector(HelloWorld::playerUpFinished));
+    player->runAction( CCSequence::create( upAction, upActionDone, NULL ));
+	
+}
 
 void HelloWorld::ccTouchesEnded( CCSet* touches, CCEvent* event )
 {
@@ -223,6 +256,7 @@ void HelloWorld::updateGame( float dt )
 	CCObject* iterProj = NULL;
 	CCObject* iterMonster = NULL;
     
+    
 	CCARRAY_FOREACH( _projectiles, iterProj )
 	{
 		CCSprite *projectile = dynamic_cast<CCSprite*>(iterProj);
@@ -249,6 +283,8 @@ void HelloWorld::updateGame( float dt )
 				monstersToDelete->addObject( monster );
 			}
 		}
+        
+        
         
 		CCARRAY_FOREACH( monstersToDelete, iterMonster )
 		{

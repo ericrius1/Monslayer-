@@ -22,6 +22,8 @@ public:
     // a selector callback
     void menuCloseCallback( CCObject* pSender);
 	void spriteMoveFinished( CCNode* sender );
+    void playerDownFinished(CCNode* sender);
+    void playerUpFinished(CCNode* sender);
 	void gameLogic( float deltaTime );
 	void ccTouchesEnded( cocos2d::CCSet* touches, cocos2d::CCEvent* event );
     
@@ -31,10 +33,21 @@ public:
 protected:
 	cocos2d::CCArray *_monsters;
 	cocos2d::CCArray *_projectiles;
-    
+    cocos2d::CCSprite *player;
 	int _monstersDestroyed;
-    
 	void updateGame( float dt );
+    cocos2d::CCSize winSize;
+        cocos2d::CCFiniteTimeAction *downAction;
+    cocos2d::CCFiniteTimeAction *upActionDone;
+    cocos2d::CCFiniteTimeAction *downActionDone;
+    
+    int playerMinDuration;
+	int playerMaxDuration;
+	int playerRangeDuration;
+    int playerActualDuration;
+
+    
+    
 };
 
 #endif // __HELLOWORLD_SCENE_H__
