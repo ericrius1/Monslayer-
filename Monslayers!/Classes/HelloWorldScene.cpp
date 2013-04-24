@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "GameOverScene.h"
+#include "IntroScene.h"
 #include "AppMacros.h"
 #include "SimpleAudioEngine.h"
 USING_NS_CC;

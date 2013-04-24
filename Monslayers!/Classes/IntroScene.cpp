@@ -40,7 +40,7 @@ bool IntroLayer::init()
 
 		this->runAction( CCSequence::create(
 			CCDelayTime::create( 3.0 ),
-			CCCallFunc::create( this, callfunc_selector(IntroLayer::gameOverDone)),
+			CCCallFunc::create( this, callfunc_selector(IntroLayer::introDone)),
 			NULL));
 
 		return true;
